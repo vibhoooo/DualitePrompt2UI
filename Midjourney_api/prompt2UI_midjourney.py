@@ -1,9 +1,12 @@
 import openai
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from flask import Flask, request, jsonify
 import random
 from flask_cors import CORS
-openai.api_key = ""     # Enter Your own OpenAI API Key
+openai.api_key = os.getenv("OPENAI_API_KEY")     # Enter Your own OpenAI API Key
 import time
 from prompt_list_generator import prompt_list_generator
 from midjourney import generate_image
@@ -11,11 +14,10 @@ from file_checker import watch_folder
 from image_path_list import image_path_list
 import imgbb
 import cropper
-import os
 
 #You need to setup your own ImgBB API key and OpenAI Key
 
-imgbb_api_key = "" # Enter your own ImgBB API Key
+imgbb_api_key = os.getenv("IMGBB_API_KEY") # Enter your own ImgBB API Key
 company_type = "Company Type"
 company_name = "Company Name"
 current_directory = os.getcwd()
