@@ -6,8 +6,6 @@ load_dotenv()
 from flask import Flask, request, jsonify
 import random
 from flask_cors import CORS
-app = Flask(__name__)
-CORS(app)
 openai.api_key = os.getenv("OPENAI_API_KEY")     # Enter Your own OpenAI API Key
 import time
 from prompt_list_generator import prompt_list_generator
@@ -175,9 +173,8 @@ def image_link_generator(prompt_list):
     
     return generated_link_list
 
-
-
-
+app = Flask(__name__)
+CORS(app)
 
 @app.route('/post', methods=['POST'])
 def get_data():
@@ -234,6 +231,6 @@ def after_request(response):
   response.headers.set('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
   return response 
 
-# if __name__ == '__main__':
-#     app.run()
+if __name__ == '__main__':
+    app.run()
 

@@ -45,7 +45,6 @@ class Receiver:
         status = ""
         self.awaiting_list = pd.DataFrame(columns = ['prompt', 'status'])
         for message in message_list:
-
             if (message['author']['username'] == 'Midjourney Bot') and ('**' in message['content']):
                 
                 if len(message['attachments']) > 0:
@@ -88,21 +87,21 @@ class Receiver:
             print(datetime.now().strftime("%H:%M:%S"))
             print('waiting for download prompts: ', waiting_for_download)
             print('=========================================')
-    """
-    def downloading_results(self):
-        processed_prompts = []
-        for i in self.df.index:
-            if self.df.loc[i].is_downloaded == 0:
-                response = requests.get(self.df.loc[i].url)
-                with open(os.path.join(self.local_path, self.df.loc[i].filename), "wb") as req:
-                    req.write(response.content)
-                self.df.loc[i, 'is_downloaded'] = 1
-                processed_prompts.append(self.df.loc[i].prompt)
-        if len(processed_prompts) > 0:
-            print(datetime.now().strftime("%H:%M:%S"))
-            print('processed prompts: ', processed_prompts)
-            print('=========================================')
-    """
+    # """
+    # def downloading_results(self):
+    #     processed_prompts = []
+    #     for i in self.df.index:
+    #         if self.df.loc[i].is_downloaded == 0:
+    #             response = requests.get(self.df.loc[i].url)
+    #             with open(os.path.join(self.local_path, self.df.loc[i].filename), "wb") as req:
+    #                 req.write(response.content)
+    #             self.df.loc[i, 'is_downloaded'] = 1
+    #             processed_prompts.append(self.df.loc[i].prompt)
+    #     if len(processed_prompts) > 0:
+    #         print(datetime.now().strftime("%H:%M:%S"))
+    #         print('processed prompts: ', processed_prompts)
+    #         print('=========================================')
+    # """
 
     def downloading_results(self):
         processed_prompts = []
