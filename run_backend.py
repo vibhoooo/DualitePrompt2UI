@@ -1,6 +1,9 @@
+from flask import Flask
 import multiprocessing
 import subprocess
 import time
+
+app = Flask(__name__)
 
 def run_prompt2UI():
     subprocess.run(['python', 'Midjourney_api/prompt2UI_midjourney.py'])
